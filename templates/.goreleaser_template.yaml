@@ -14,22 +14,22 @@ before:
     - cargo fetch --locked
 
 builds:
-  # - id: linux-amd64-gnu
-  #   builder: rust
-  #   targets:
-  #     - x86_64-unknown-linux-gnu
-  - id: linux-amd64-musl
+  - id: linux-amd64-gnu
     builder: rust
     targets:
-      - x86_64-unknown-linux-musl
-  # - id: linux-arm64-gnu
+      - x86_64-unknown-linux-gnu
+  # - id: linux-amd64-musl
   #   builder: rust
   #   targets:
-  #     - aarch64-unknown-linux-gnu
-  - id: linux-arm64-musl
+  #     - x86_64-unknown-linux-musl
+  - id: linux-arm64-gnu
     builder: rust
     targets:
-      - aarch64-unknown-linux-musl
+      - aarch64-unknown-linux-gnu
+  # - id: linux-arm64-musl
+  #   builder: rust
+  #   targets:
+  #     - aarch64-unknown-linux-musl
   - id: windows-amd64-gnu
     builder: rust
     # tool: cross
