@@ -41,6 +41,9 @@ builds:
   #     - x86_64-unknown-linux-musl
   #     - aarch64-unknown-linux-musl
 
+snapshot:
+  name_template: "{{ incpatch .Version }}-{{ .ShortCommit }}"
+
 # Creates archives for each target.
 archives:
   - formats: tar.gz
@@ -82,9 +85,8 @@ dockers_v2:
     #   - linux/amd64
     #   - linux/arm64
     tags:
-      - "v{{ .Version }}"
-      - "{{ if .IsNightly }}nightly{{ end }}"
-      - "{{ if not .IsNightly }}latest{{ end }}"
+      - "{{ if .IsSnapshot }}{{ .Branch }}{{ else }}v{{ .Version }}{{ end }}"
+      - "{{ if not .IsSnapshot }}latest{{ end }}"
     labels:
       "org.opencontainers.image.created": "{{.Date}}"
       "org.opencontainers.image.name": "{{.ProjectName}}"
